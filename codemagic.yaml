@@ -1,3 +1,15 @@
-git add codemagic.yaml
-git commit -m 'Add first workflow'
-git push
+workflows:
+  ios-workflow:  # ID workflow, có thể đặt tên khác
+    name: iOS Build  # Tên hiển thị
+    max_build_duration: 60  # Giới hạn thời gian build (phút)
+    environment:
+      flutter: stable  # Phiên bản Flutter
+      xcode: latest  # Phiên bản Xcode
+    scripts:
+      - flutter pub get  # Lấy dependencies
+      - flutter build ios --release  # Build iOS release
+    artifacts:
+      - build/ios/iphoneos/*.ipa  # Lưu file .ipa
+    publishing:
+      app_store_connect:  # Nếu muốn publish lên App Store
+        api_key: $APP_STORE_CONNECT_API_KEY  # Biến môi trường cho API key
