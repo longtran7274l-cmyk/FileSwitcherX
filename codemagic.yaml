@@ -10,6 +10,3 @@ workflows:
       - flutter build ios --release  # Build iOS release
     artifacts:
       - build/ios/iphoneos/*.ipa  # Lưu file .ipa
-    publishing:
-      app_store_connect:  # Nếu muốn publish lên App Store
-        api_key: $APP_STORE_CONNECT_API_KEY  # Biến môi trường cho API key
